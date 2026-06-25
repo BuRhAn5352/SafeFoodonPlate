@@ -21,9 +21,11 @@ async def check_dish(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if not allergies and not diets:
         await update.message.reply_text(
-            "You haven't set up your allergy profile yet!\n\n"
-            "Use /setup — it takes less than a minute."
-        )
+            "⚠️ Please set up your profile first — it takes 30 seconds.\n\n"
+            "Use /setup and select your allergies.\n"
+            "If you have none, tap *No Allergies* then *Done*.",
+            parse_mode="Markdown"
+            )
         return
 
     await context.bot.send_chat_action(
