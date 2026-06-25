@@ -20,7 +20,7 @@ allergy_keyboard = [
     ["Peanuts", "Dairy", "Gluten"],
     ["Eggs", "Soy", "Shellfish"],
     ["Fish", "Tree Nuts", "Onion/Garlic"],
-    ["Done"]
+    ["No Allergies","Done"]
 ]
 
 #diet and lifestyle accordance
