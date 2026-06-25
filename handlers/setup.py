@@ -43,6 +43,19 @@ async def handle_allergy_choice(update: Update, context: ContextTypes.DEFAULT_TY
     """Called each time user taps an allergy button. Toggles on/off. Done → diet step."""
     text = update.message.text.strip()
 
+    if text.lower() == "no allergies":
+        context.user_data["temp_allergies"] = []
+        kb = ReplyKeyboardMarkup(diet_keyboard, resize_keyboard=True)
+        await update.message.reply_text(
+            "✅ Got it — no allergies.\n\n"
+            "*Step 2 of 2 — Diet preferences*\n"
+            "Tap diets to add/remove them.\n\n"
+            "When finished tap *Done*.",
+            reply_markup=kb,
+            parse_mode="Markdown",
+            )
+        return choose_diet
+
     if text.lower() == "done":
         selected = context.user_data.get("temp_allergies", [])
         current = ", ".join(selected) if selected else "none"
